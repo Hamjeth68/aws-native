@@ -1,11 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { SafeAreaView } from 'react-native-web';
+import Amplify from 'aws-amplify'
+import awsconfig from './aws-exports'
+
+Amplify.configure(awsconfig)
+
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <SafeAreaView>
+        <TextInput
+        style={styles.input}
+        />
+      </SafeAreaView>
     </View>
   );
 }
@@ -17,4 +26,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+  }
 });
